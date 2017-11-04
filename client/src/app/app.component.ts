@@ -1,0 +1,20 @@
+import { Component } from '@angular/core';
+import { RouterModule, Routes, Router } from '@angular/router';
+
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'app';
+  uname: string;
+  password: string;
+  constructor(private router: Router) {
+  }
+  checkLogin() {
+    window.location.reload();
+  this.router.navigateByUrl('/dashboard');
+  }
+}

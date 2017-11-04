@@ -1,0 +1,22 @@
+<div class="container">
+    <h2 class="page-header">SEND MESSAGE</h2>
+    <form>
+        <div class="form-group">
+            <label>Sender</label><br>
+            <input type="text" [(ngModel)]="sender" name="sender" class="form_control" required>
+        </div>
+
+        <div class="form-group">
+            <label>Receiver</label><br>
+            <input type="text" [(ngModel)]="receiver" name="receiver" class="form_control" required>
+        </div>
+
+        <div class="form-group">
+            <label>Message</label><br>
+            <textarea name="message" cols="90" rows="10" [(ngModel)]="message"></textarea>            
+        </div>
+
+        <input type="submit" class="btn btn btn-primary" value="SEND"(click)="sendMessage()">
+        
+    </form>
+</div>
