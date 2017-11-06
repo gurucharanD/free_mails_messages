@@ -21,22 +21,21 @@ export class EmailComponent implements OnInit {
 
   sendEmail() {
     const newMail = {
-      sender: this.sender,
+      email: this.sender,
       receiver: this.receiver,
       subject: this.subject,
       message: this.message,
       password: this.password
     };
 
-    console.log(newMail);
 
     this.loginService.sendEmail(newMail).subscribe(mail => {
-      console.log('hii');
       if (mail) {
-        console.log(mail.msg);
         alert('mail sent successfully');
+        window.location.reload();
       }else {
         alert('sending mail failed');
+        window.location.reload();
       }
     });
   }

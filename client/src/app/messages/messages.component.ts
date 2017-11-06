@@ -20,13 +20,14 @@ receiver: this.receiver,
 message: this.message
 };
 
-this.loginService.sendEmail(newMessage).subscribe(res => {
+this.loginService.sendMessage(newMessage).subscribe(res => {
   console.log('hii');
   if (res) {
-    console.log(res.msg);
     alert('message sent successfully');
+    window.location.reload();
   }else {
     alert('sending message failed');
+    window.location.reload();
   }
 });
 
