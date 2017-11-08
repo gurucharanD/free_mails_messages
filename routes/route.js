@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const fs = require('fs')
+const mongoose  = require('mongoose');
+const User = require('../models/User');
 
 const Nexmo = require('nexmo');
 const nodemailer = require('nodemailer');
@@ -19,15 +21,71 @@ router.use(function timeLog(req, res, next) {
 })
 
 
-/*--------------LOGIN--------------------------*/
 
-router.get('/login', (req, res, next) => {
-    login.find((err, login) => {
-        res.json(login)
-    })
-})
+/*--------------REGISTER--------------------------*/
 
-/*------------------LOGIN END HERE------------------------*/
+router.post('/registerUser',function(req,res){
+	console.log("Register a user");
+  
+	var newUser=new User();
+	newUser.username=req.body.username;
+	newUser.password=req.body.password;
+	
+	console.log(newUser)
+	
+	User.find({username:newUser.username},function(err,users){
+		if(users.length){
+			console.log("User already exists");
+			res.json({"msg":"User already exists","result":0});
+		}
+		else{
+			newUser.save(function(err,insertedUser){
+				if(err){
+					console.log("error Saving user "+err);
+					res.json({msg:"Registration unsuccessful",result:0});
+				}
+				else{
+					console.log("Registration successful");
+					res.json({msg:"Registration Successful",result:1})
+				}
+	
+			})
+		}
+
+});
+})  
+
+/*------------------REGISTER END HERE------------------------*/
+
+/*--------------LOGIN------------*/
+router.post('/login',function(req,res){
+	
+	console.log(req.body.username)
+	console.log(req.body.password)
+	var response={}
+  User.findOne({username:req.body.username,password:req.body.password},function(err,user){
+	
+		 if(err) 
+		 { 
+			 console.log(err);
+			 return {msg:"error"};
+			 
+		 }
+		 if(!user){
+			 console.log("invalid user");
+			 res.json({msg:"Invalid User",result:0});
+			 
+	   }
+	   else{
+	   console.log("Valid User");
+	   res.json({msg:'Login successful',result:1});
+
+	   }
+		 
+	 });
+ });
+
+/*-------------------------------*/
 
 
 
@@ -45,7 +103,12 @@ router.post('/sendmessage', (req, res, next) => {
   var to = req.body.receiver;
   var text = req.body.msg;
 
+   console.log(to)
+   
+  var status="message sent"
   nexmo.message.sendSms(from, to, text);
+  console.log(status)
+  res.json(status)
   
 })
 

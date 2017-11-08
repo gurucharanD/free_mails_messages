@@ -4,7 +4,14 @@ const bodyparser = require('body-parser')
 const cors = require('cors')
 const path = require('path')
 const route=require('./routes/route')
+const mongoose  = require('mongoose');
 
+mongoose.connect('mongodb://localhost:27017/unisender')
+
+//Db connection success
+mongoose.connection.on('connected', () => {
+    console.log('connected to db at port:27017')
+})
 
 const app = express()
 

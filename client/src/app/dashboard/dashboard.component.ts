@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  username: string;
   constructor() { }
 
   ngOnInit() {
+    this.username = Cookie.get('username');
   }
 
 }

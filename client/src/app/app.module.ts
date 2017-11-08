@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+
 
 
 import { AppComponent } from './app.component';
@@ -10,11 +12,16 @@ import { MessagesComponent } from './messages/messages.component';
 import { EmailComponent } from './email/email.component';
 import {LoginService } from './login.service';
 import { HttpModule } from '@angular/http';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const appRoutes: Routes = [
+{path: '', component: LoginComponent},
 {path: 'email', component: EmailComponent},
-{path: 'message', component: MessagesComponent}
+{path: 'message', component: MessagesComponent},
+{path: 'register', component: RegisterComponent},
+{path: 'dashboard', component: DashboardComponent}
 ];
 
 @NgModule({
@@ -22,7 +29,9 @@ const appRoutes: Routes = [
     AppComponent,
     DashboardComponent,
     MessagesComponent,
-    EmailComponent
+    EmailComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

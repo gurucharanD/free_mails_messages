@@ -9,12 +9,4 @@ import { RouterModule, Routes, Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'app';
-  uname: string;
-  password: string;
-  constructor(private router: Router) {
-  }
-  checkLogin() {
-    window.location.reload();
-  this.router.navigateByUrl('/dashboard');
-  }
 }

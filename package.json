@@ -11,9 +11,11 @@
   "dependencies": {
     "cors": "^2.8.4",
     "express": "^4.16.2",
+    "mongoose": "^4.13.0",
     "nexmo": "^2.0.2",
     "nodemailer": "^4.2.0",
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.12.1",
+    "twilio": "^3.9.2"
   },
   "devDependencies": {
     "@angular/cli": "^1.4.9"

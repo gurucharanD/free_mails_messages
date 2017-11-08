@@ -21,7 +21,6 @@ message: this.message
 };
 
 this.loginService.sendMessage(newMessage).subscribe(res => {
-  console.log('hii');
   if (res) {
     alert('message sent successfully');
     window.location.reload();

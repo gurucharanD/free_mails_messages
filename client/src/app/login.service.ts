@@ -31,5 +31,18 @@ export class LoginService {
       // .catch(this.handleError);
     }
 
+registerUser(user) {
+   const headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+   return this.http.post('http://localhost:3000/api/registerUser', JSON.stringify(user), {headers: headers})
+   .map(res => res.json());
+  }
+
+  isValidUser(user) {
+    const headers = new Headers();
+   headers.append('Content-Type', 'application/json');
+   return this.http.post('http://localhost:3000/api/login', JSON.stringify(user), {headers: headers})
+   .map(res => res.json());
+   }
 }
 

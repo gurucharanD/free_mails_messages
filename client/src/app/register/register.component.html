@@ -1,0 +1,33 @@
+<div class="jumbotron">
+    <img src="https://webim.ru/wp-content/uploads/2015/10/UniSender.png" style="margin-left:40%" width="20%" height="10%" alt="code">        
+  </div>
+  <div class="row">
+  <div class="col-sm-3" style="margin-left:2%;" >
+  <img src="http://marketplace.artdepo.com.ua/upload/medialibrary/a39/a39b533ead64df6bbf69cdf2baed8768.png" width="70%" height="70%" alt="code">
+  </div>
+  <div id="loginForm" class="col-sm-8">
+  <form class="form-horizontal">
+      <div class="container">
+          
+            <h2 class="page-header">REGISTER</h2>
+            <form class="container">
+          
+                <div class="form-group">
+                    <label>username</label><br>
+                   &nbsp;&nbsp;&nbsp; <input class="form-control input-sm" type="text" name="username" class="form_control" [(ngModel)]="username" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control input-sm" type="password" name="password" class="form_control"[(ngModel)]="password" required>
+                </div>
+                
+                <input type="submit" class="btn btn btn-danger" value="REGISTER" (click)="registerUser()">
+                
+              </form>
+              <br>
+        
+      </div>
+    
+  </form>
+  
+  
