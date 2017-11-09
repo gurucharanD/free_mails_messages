@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService } from '../login.service';
+import { RouterModule, Routes, Router } from '@angular/router';
 
 @Component({
   selector: 'app-messages',
@@ -8,11 +9,19 @@ import {LoginService } from '../login.service';
 })
 export class MessagesComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   sender: String;
   receiver: String;
   message: String;
+
+  navigate() {
+    this.router.navigateByUrl('/email');
+  }
+  logouts() {
+    this.router.navigateByUrl('/');
+  }
+
 sendMessage() {
   const newMessage = {
 sender: this.sender,

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService } from '../login.service';
+import { RouterModule, Routes, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-email',
@@ -8,7 +10,7 @@ import {LoginService } from '../login.service';
 })
 export class EmailComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   sender: String;
   receiver: String;
@@ -18,7 +20,12 @@ export class EmailComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  navigateTo() {
+    this.router.navigateByUrl('/message');
+  }
+  logout() {
+    this.router.navigateByUrl('/');
+  }
   sendEmail() {
     const newMail = {
       email: this.sender,
@@ -27,7 +34,6 @@ export class EmailComponent implements OnInit {
       message: this.message,
       password: this.password
     };
-
 
     this.loginService.sendEmail(newMail).subscribe(mail => {
       if (mail) {

@@ -101,9 +101,9 @@ router.post('/sendmessage', (req, res, next) => {
 
   var from = req.body.sender;
   var to = req.body.receiver;
-  var text = req.body.msg;
+  var text = req.body.message;
 
-   console.log(to)
+   console.log(req.body)
    
   var status="message sent"
   nexmo.message.sendSms(from, to, text);
