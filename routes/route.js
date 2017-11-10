@@ -11,7 +11,7 @@ const nodemailer = require('nodemailer');
 //log middleware that logs  requests to this router
 router.use(function timeLog(req, res, next) {
 
-    fs.appendFile('log.txt', Date() + "\t" + req.url + req.ip + "\n", 'utf-8', (err, data) => {
+    fs.appendFile('log.txt', Date() + "\t" + req.url + req.ip + "\n" , 'utf-8', (err, data) => {
         if (err) {
             console.log('error');
         }
@@ -136,7 +136,7 @@ router.post('/sendemail', (req, res, next) => {
 	
 	transporter.sendMail(mailOptions, function(error, info){
 		if (error) {
-			console.log(error);
+			res.json({msg:'error raised'})
 		} else {
 			console.log('Email sent: ' + info.response);
 			res.json(info.response)

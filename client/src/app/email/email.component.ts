@@ -36,7 +36,9 @@ export class EmailComponent implements OnInit {
     };
 
     this.loginService.sendEmail(newMail).subscribe(mail => {
-      if (mail) {
+      if (mail.msg !== 'error raised') {
+        // tslint:disable-next-line:no-non-null-assertion
+        console.log(mail);
         alert('mail sent successfully');
         window.location.reload();
       }else {
